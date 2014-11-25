@@ -31,12 +31,14 @@
 </form>
 
 <script type="template" id="page-template"> 
+
+<div> 
 <h2>{{name}} </h2>
 <p>{{street_address}} </p>
 <p> {{phone}}</p>
-<p>{{duration}} </p>
+<p id="{{lat}}_{{long}}">{{duration}} </p>
 <p>{{estimate}}</p>
-
+</div>
 
 
 </script> 
@@ -45,8 +47,9 @@
 		<script type="text/javascript" src="js/handlebars.js"></script>
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/map.js"></script>
-		<script src="js/locu.js"></script>
 		<script src="js/uber.js"></script>
+		<script src="js/locu.js"></script>
+		
 		
 		
 

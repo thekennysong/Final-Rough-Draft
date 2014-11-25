@@ -1,8 +1,9 @@
 var map;
+var currentPosition;
 
 function initialize() {
   var mapOptions = {
-    zoom: 19
+    zoom: 15
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -12,7 +13,7 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-
+      currentPosition = position;
       var geocoder = new google.maps.Geocoder();
 
       geocoder.geocode({
