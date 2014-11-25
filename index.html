@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>Kenny Song Final</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<style type="text/css">
+		#map-canvas { 
+			 height: 80%;
+			 width: 80%; 
+			 margin: 0; 
+			 padding: 0;
+		}
+		#results{
+			margin-left: 10px;
+		}
+		</style>
+
+	</head>
+	<body>
+	<div id="map-canvas"></div>
+	<div id="results"></div>
+	<div id="uberResults"></div>
+
+<form action="" id="new-thing">
+	<div id="nameBox"><p>Spa/Salon Name</p><input type="text" id="search-term" ></div>
+	
+	<input type="submit" value="Search">
+
+</form>
+
+<script type="template" id="page-template"> 
+<h2>{{name}} </h2>
+<p>{{street_address}} </p>
+<p> {{phone}}</p>
+<p>{{duration}} </p>
+<p>{{estimate}}</p>
+
+
+
+</script> 
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc">
+		</script>
+		<script type="text/javascript" src="js/handlebars.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/map.js"></script>
+		<script src="js/locu.js"></script>
+		<script src="js/uber.js"></script>
+		
+		
+
+	</body>
+</html>
