@@ -5,7 +5,7 @@ var songTemplateFunction = Handlebars.compile($('#page-template').html());
 // var spaLongitude = []; //-118.2841455
 var spaLatLong = [];
 var spaName = [];
-
+var marker;
 
 
 var search = function(searchTerm){
@@ -18,9 +18,6 @@ var search = function(searchTerm){
     var html = '';
 
     for(var i = 0; i < response.objects.length; i++){
-      //append lat and long to the array 
-      // spaLatitude.push(response.objects[i].lat);
-      // spaLongitude.push(response.objects[i].long);
 
       spaLatLong.push({
           latitude: response.objects[i].lat,
@@ -33,27 +30,17 @@ var search = function(searchTerm){
       html += songTemplateFunction(response.objects[i]);
       //console.log(currentPosition.coords.latitude, currentPosition.coords.longitude, response.objects[i].lat,response.objects[i].long);
       getEstimatesForUserLocation(currentPosition.coords.latitude, currentPosition.coords.longitude, response.objects[i].lat,response.objects[i].long);
-          // var latLng = new google.maps.latLng(spaLatitude,spaLongitude);
-          // console.log(latLng);
-          // var marker = new google.maps.Marker({
-          //     map: map,
-          //     position: latLng,
-          //     animation: google.maps.Animation.DROP,
-          //     icon: 'beer.png'
-          // });
-
-          
 
     }
     // console.log(arrayLength);
     $('#results').html(html);
-    setPoints(spaLatLong, spaName);
-
+    setPoints(spaLatLong, spaName, uberInfo);
+    //console.log(uberInfo.time);
   });
 
 };
-var setPoints = function(spaLatLong, spaName){
-                  var marker;
+var setPoints = function(spaLatLong, spaName, uberInfo){
+                  
                   var markers = [];
 
           for (var i = 0; i < spaLatLong.length; i++) {
@@ -77,25 +64,28 @@ var setPoints = function(spaLatLong, spaName){
 
                   google.maps.event.addListener(marker, 'click', function(marker, i){
                         return function(){
-                            infowindow.setContent(spaName[i].name);
+                            var newTime;
+                            var cost;
+                            newTime = Math.round((uberInfo[i].time)/60); 
+                            cost = uberInfo[i].eta;
+                            infowindow.setContent("<h2>UberX</h2>" + "<b>Name: </b></br>" + spaName[i].name + "</br><b>Mins: </b></br>" + newTime.toString() + "</br><b>Cost:</b></br> " + cost.toString());
                             infowindow.open(map, marker);
+                            //set the lat and long when the user clicks 
+
                         }                       
                     }(marker, i));
 
           }  
 };
 
-
-
 $('form').on('submit', function(e){
   e.preventDefault();
-  // spaLongitude.clear();
-  // spaLatitude.clear();
+
 
   var searchTerm = $('#search-term').val();
 
   console.log(searchTerm);
 
-  $('#results').html('Loading....');
+  // $('#results').html('Loading....');
   search(searchTerm);
 });

@@ -3,7 +3,8 @@ var currentPosition;
 
 function initialize() {
   var mapOptions = {
-    zoom: 15
+    zoom: 8,
+    styles: [{'featureType':'water','stylers':[{'visibility':'on'},{'color':'#acbcc9'}]},{'featureType':'landscape','stylers':[{'color':'#f2e5d4'}]},{'featureType':'road.highway','elementType':'geometry','stylers':[{'color':'#c5c6c6'}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#e4d7c6'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#fbfaf7'}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#c5dac6'}]},{'featureType':'administrative','stylers':[{'visibility':'on'},{'lightness':33}]},{'featureType':'road'},{'featureType':'poi.park','elementType':'labels','stylers':[{'visibility':'on'},{'lightness':20}]},{},{'featureType':'road','stylers':[{'lightness':20}]}]
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -57,13 +58,7 @@ function handleNoGeolocation(errorFlag) {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
 
-//  var options = {
-//    map: map,
-//    position: new google.maps.LatLng(60, 105),
-//    content: content
-//  };
 
-  //var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
 }
 
