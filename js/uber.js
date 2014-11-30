@@ -1,11 +1,7 @@
-// Uber API Constants
-
 var eventTemplateFunction = Handlebars.compile($('#page-template').html());
 
 var uberClientId = "qVKKs4BjQlqHY06HXn5i4H9Chi2g4IxS"
   , uberServerToken = "lFdfJgCSnohPg0LVm8NN3qBviR0-cwl42exRYqAU";
-
-var uberInfo = [];
 
 
 function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, endLongitude) {
@@ -23,7 +19,6 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
     success: function(result) {
         document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + Math.round(result.prices[0].duration/60);
         document.getElementById(endLongitude).innerHTML = "<b>UberX Estimated Cost: </b> " + result.prices[0].estimate;
-        //document.getElementById(endLongitude).innerHTML = "<b>UberBlack Estimated Cost: </b> " + result.prices[3].estimate;
     }, 
     error: function(result){
           
@@ -38,5 +33,3 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
    
   });
 }
-
-console.log(uberInfo);

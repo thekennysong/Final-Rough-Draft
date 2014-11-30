@@ -1,8 +1,6 @@
 
 var songTemplateFunction = Handlebars.compile($('#page-template').html());
 
-// var spaLatitude = []; //34.0208106
-// var spaLongitude = []; //-118.2841455
 var spaLatLong = [];
 var spaName = [];
 var marker;
@@ -26,33 +24,17 @@ var search = function(searchTerm){
       spaName.push({
           name: response.objects[i].name
       });
-      //console.log(spaLatitude);
       html += songTemplateFunction(response.objects[i]);
-      //console.log(currentPosition.coords.latitude, currentPosition.coords.longitude, response.objects[i].lat,response.objects[i].long);
       getEstimatesForUserLocation(currentPosition.coords.latitude, currentPosition.coords.longitude, response.objects[i].lat,response.objects[i].long);
 
     }
-    // console.log(arrayLength);
+
     $('#results').html(html);
     setPoints(spaLatLong, spaName, uberInfo);
-    //injectData(spaLatLong, uberInfo);
-    //console.log(uberInfo.time);
+
   });
 
 };
-
-// var injectData = function(spaLatLong, uberInfo){
-//       var newTime;
-//       var cost;
-//       for(var i = 0; i < uberInfo.length; i++){
-//       newTime = Math.round((uberInfo[i].time)/60); 
-//       cost = uberInfo[i].eta;
-//       //console.log(spaLatLong[i].latitude_spaLatLong[i].longitude);
-//       document.getElementById(spaLatLong[i].latitude).innerHTML = newTime;
-//       }
-// };
-      
-
 
 var setPoints = function(spaLatLong, spaName, uberInfo){
                   
@@ -64,12 +46,10 @@ var setPoints = function(spaLatLong, spaName, uberInfo){
                   //var markers = [];
 
                   var infowindow = new google.maps.InfoWindow({
-                        //map: map,
                         position: latLng,
-                        //content: spaName[i].name
                     });
                       console.log(latLng);
-                  // Creating a marker and putting it on the map
+                  
                   marker = new google.maps.Marker({
                       position: latLng,
                       map: map,
@@ -82,7 +62,7 @@ var setPoints = function(spaLatLong, spaName, uberInfo){
                            
                             infowindow.setContent("<b>Name: </b></br>" + spaName[i].name);
                             infowindow.open(map, marker);
-                            //set the lat and long when the user clicks 
+                            
 
                         }                       
                     }(marker, i));
@@ -98,6 +78,6 @@ $('form').on('submit', function(e){
 
   console.log(searchTerm);
 
-  // $('#results').html('Loading....');
+
   search(searchTerm);
 });
