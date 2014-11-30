@@ -21,26 +21,9 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
       end_longitude: endLongitude
     },
     success: function(result) {
-
-        uberInfo.push({
-            time: result.prices[0].duration,
-            eta: result.prices[0].estimate
-        }); 
-        // //uberXL
-        // uberInfo.push({
-        //     time1: result.prices[1].duration,
-        //     eta1: result.prices[1].estimate
-        // }); 
-        // //uberPlus
-        // uberInfo.push({
-        //     time2: result.prices[2].duration,
-        //     eta2: result.prices[2].estimate
-        // });       
-        // //uberBlack
-        // uberInfo.push({
-        //     time3: result.prices[3].duration,
-        //     eta3: result.prices[3].estimate
-        // });   
+        document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + Math.round(result.prices[0].duration/60);
+        document.getElementById(endLongitude).innerHTML = "<b>UberX Estimated Cost: </b> " + result.prices[0].estimate;
+        //document.getElementById(endLongitude).innerHTML = "<b>UberBlack Estimated Cost: </b> " + result.prices[3].estimate;
     }, 
     error: function(result){
           

@@ -35,10 +35,25 @@ var search = function(searchTerm){
     // console.log(arrayLength);
     $('#results').html(html);
     setPoints(spaLatLong, spaName, uberInfo);
+    //injectData(spaLatLong, uberInfo);
     //console.log(uberInfo.time);
   });
 
 };
+
+// var injectData = function(spaLatLong, uberInfo){
+//       var newTime;
+//       var cost;
+//       for(var i = 0; i < uberInfo.length; i++){
+//       newTime = Math.round((uberInfo[i].time)/60); 
+//       cost = uberInfo[i].eta;
+//       //console.log(spaLatLong[i].latitude_spaLatLong[i].longitude);
+//       document.getElementById(spaLatLong[i].latitude).innerHTML = newTime;
+//       }
+// };
+      
+
+
 var setPoints = function(spaLatLong, spaName, uberInfo){
                   
                   var markers = [];
@@ -64,11 +79,8 @@ var setPoints = function(spaLatLong, spaName, uberInfo){
 
                   google.maps.event.addListener(marker, 'click', function(marker, i){
                         return function(){
-                            var newTime;
-                            var cost;
-                            newTime = Math.round((uberInfo[i].time)/60); 
-                            cost = uberInfo[i].eta;
-                            infowindow.setContent("<h2>UberX</h2>" + "<b>Name: </b></br>" + spaName[i].name + "</br><b>Mins: </b></br>" + newTime.toString() + "</br><b>Cost:</b></br> " + cost.toString());
+                           
+                            infowindow.setContent("<b>Name: </b></br>" + spaName[i].name);
                             infowindow.open(map, marker);
                             //set the lat and long when the user clicks 
 
