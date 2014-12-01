@@ -30,13 +30,13 @@ var search = function(searchTerm){
     }
 
     $('#results').html(html);
-    setPoints(spaLatLong, spaName, uberInfo);
+    setPoints(spaLatLong, spaName);
 
   });
 
 };
 
-var setPoints = function(spaLatLong, spaName, uberInfo){
+var setPoints = function(spaLatLong, spaName){
                   
                   var markers = [];
 
