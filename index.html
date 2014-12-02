@@ -11,7 +11,8 @@
 	<body bgcolor="#f2e5d4">
 	<div id="container">
 	<form action="" id="new-thing">
-	<div id="nameBox"><p id="spaSalonName">Spa/Salon Name</p><input type="text" id="search-term" ></div>
+	<div id="nameBox"><p id="spaSalonName">Spa/Salon Name</p><input type="text" value="Zip Code..." id="search-term" onblur="if(this.value=='')this.value='Zip Code...';" 
+onfocus="if(this.value=='Zip Code...')this.value='';"></div>
 	<button type="submit" value="Search" class="flat-button"> Search</button>
 	</form>
 	<div id="results"></div>
