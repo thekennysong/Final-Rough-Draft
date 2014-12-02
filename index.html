@@ -1,49 +1,55 @@
 <html>
-	<head>
-		<title>Kenny Song Final</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/style.css">
+
+<head>
+    <title>Kenny Song Final</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
 
 
 
-	</head>
-	<body bgcolor="#f2e5d4">
-	<div id="container">
-	<form action="" id="new-thing">
-	<div id="nameBox"><p id="spaSalonName">Spa/Salon Name</p><input type="text" id="search-term" ></div>
-	<button type="submit" value="Search" class="flat-button"> Search</button>
-	</form>
-	<div id="results"></div>
-	<div id="error"></div>
-	<div id="map-canvas"></div>
-	
+</head>
 
-<script type="template" id="page-template"> 
-
-<div class="ind"> 
-<h2>{{name}} </h2>
-<p>{{street_address}} {{locality}}</p>
-<p> {{phone}}</p>
-
-<p id="{{lat}}"> </p>
-<p id="{{long}}"> </p>
-
-</div>
+<body bgcolor="#f2e5d4">
+    <div id="container">
+        <form action="" id="new-thing">
+            <div id="nameBox">
+                <p id="spaSalonName">Spa/Salon Name</p>
+                <input type="text" id="search-term">
+            </div>
+            <button type="submit" value="Search" class="flat-button"> Search</button>
+        </form>
+        <div id="results"></div>
+        <div id="error"></div>
+        <div id="map-canvas"></div>
 
 
-</script>
-</div>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc">
-		</script>
-		<script type="text/javascript" src="js/handlebars.js"></script>
-		<script src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/map.js"></script>
-		<script src="js/uber.js"></script>
-		<script src="js/locu.js"></script>
-		
-		
-		
+        <script type="template" id="page-template">
 
-	</body>
+            <div class="ind">
+                <h2>{{name}} </h2>
+                <p>{{street_address}} {{locality}}</p>
+                <p> {{phone}}</p>
+
+                <p id="{{lat}}"> </p>
+                <p id="{{long}}"> </p>
+
+            </div>
+
+
+        </script>
+    </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc">
+    </script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/uber.js"></script>
+    <script src="js/locu.js"></script>
+
+
+
+
+</body>
+
 </html>
