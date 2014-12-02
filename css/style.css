@@ -1,4 +1,4 @@
-		@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+		@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
   font-family: 'Montserrat', sans-serif;
   
@@ -26,10 +26,13 @@ body {
   			width: 300px;
   			display:inline-block;
   			margin-left: 10px;
-  			padding-top: 24%;
+  			padding-top: 27%;
   			line-height: 120%;
-  			white-space: nowrap;
-
+  			/*white-space: nowrap;*/
+		}
+		.middle{
+			margin-top: 0px;
+  			margin-bottom: 0px;
 		}
 		#container{
 			max-height: 80%;
