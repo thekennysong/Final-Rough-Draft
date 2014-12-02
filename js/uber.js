@@ -1,11 +1,11 @@
 var eventTemplateFunction = Handlebars.compile($('#page-template').html());
 
 var uberClientId = "qVKKs4BjQlqHY06HXn5i4H9Chi2g4IxS"
-  , uberServerToken = "lFdfJgCSnohPg0LVm8NN3qBviR0-cwl42exRYqAU";
+  , uberServerToken = "r5_GLzD9stRCG7xdvjMrvOi4UdAhv2UuSxEXExoS";
 
 
 function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, endLongitude) {
-  $.ajax({
+  var promise = $.ajax({
     url: "https://api.uber.com/v1/estimates/price",
     headers: {
     	Authorization: "Token " + uberServerToken
@@ -15,12 +15,13 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
       start_longitude: startLongitude,
       end_latitude: endLatitude,
       end_longitude: endLongitude
-    },
-    success: function(result) {
-        document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + Math.round(result.prices[0].duration/60);
-        document.getElementById(endLongitude).innerHTML = "<b>UberX Estimated Cost: </b> " + result.prices[0].estimate;
-    }, 
-    error: function(result){
+    }
+    });
+    promise.done(function(response) {
+        document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + Math.round(response.prices[0].duration/60);
+        document.getElementById(endLongitude).innerHTML = "<b>UberX Estimated Cost: </b> " + response.prices[0].estimate;
+    }); 
+    promise.fail(function(){
           
           document.getElementById('spaSalonName').innerHTML = 'Too Far for Uber';
           
@@ -28,8 +29,8 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
               document.getElementById('spaSalonName').innerHTML = 'Spa/Salon Name';
           }, 5000);
           
-    }
+    });
     
    
-  });
+  
 }
