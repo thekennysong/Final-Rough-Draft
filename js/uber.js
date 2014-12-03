@@ -18,7 +18,21 @@ function getEstimatesForUserLocation(startLatitude,startLongitude, endLatitude, 
     }
     });
     promise.done(function(response) {
-        document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + Math.round(response.prices[0].duration/60);
+        var answer = 0;
+        if(Math.round(response.prices[0].duration*10/60)/10 == (response.prices[0].duration/60)){
+            answer = Math.round(response.prices[0].duration*10/60)/10;
+        }
+        else{
+            answer = Math.round(response.prices[0].duration/60);
+        }  
+
+        document.getElementById(endLatitude).innerHTML = "<b>Estimated Travel Mins: </b>" + answer;
+        // if(Math.round(response.prices[0].duration*10/60)/10 == response.prices[0].toFixed(1)){
+        //     Math.round(response.prices[0].duration/60);
+        // }
+        // else{
+        //     Math.round(response.prices[0].duration/60);
+        // }    
         document.getElementById(endLongitude).innerHTML = "<b>UberX Estimated Cost: </b> " + response.prices[0].estimate;
     }); 
     promise.fail(function(){
